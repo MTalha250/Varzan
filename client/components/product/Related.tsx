@@ -1,8 +1,9 @@
 "use client";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useRef } from "react";
+import type { Product } from "@/types";
 
-const Related = () => {
+const Related = ({ products }: { products: Product[] }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
 
   const scrollLeft = () => {
@@ -22,40 +23,6 @@ const Related = () => {
       });
     }
   };
-  const products = [
-    {
-      image: "/images/sample.jpg",
-      title: "Sample Product",
-    },
-    {
-      image: "/images/sample.jpg",
-      title: "Sample Product",
-    },
-    {
-      image: "/images/sample.jpg",
-      title: "Sample Product",
-    },
-    {
-      image: "/images/sample.jpg",
-      title: "Sample Product",
-    },
-    {
-      image: "/images/sample.jpg",
-      title: "Sample Product",
-    },
-    {
-      image: "/images/sample.jpg",
-      title: "Sample Product",
-    },
-    {
-      image: "/images/sample.jpg",
-      title: "Sample Product",
-    },
-    {
-      image: "/images/sample.jpg",
-      title: "Sample Product",
-    },
-  ];
 
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
@@ -70,14 +37,17 @@ const Related = () => {
           ref={scrollContainerRef}
           className="flex overflow-x-scroll -ml-8 scrollbar-hide w-full"
         >
-          {products.map((product, index) => (
+          {products.map((product) => (
             <div
-              key={index}
+              key={product._id}
               className="basis-1/4 shrink-0 pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
             >
-              <img src={product.image} alt={product.title} />
+              <img
+                src={product.images?.[0] || "/images/sample.jpg"}
+                alt={product.name}
+              />
               <h2 className="text-center text-xl font-engravers mt-2 text-primary">
-                {product.title}
+                {product.name}
               </h2>
             </div>
           ))}

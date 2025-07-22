@@ -4,20 +4,23 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { fetchFilteredProducts } from "@/lib/api";
 import type { Product } from "@/types";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 
 const Grid = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [totalPages, setTotalPages] = useState(1);
   const searchParams = useSearchParams();
+  const router = useRouter();
   const selectedCategory = searchParams.get("category");
   const query = searchParams.get("query");
+  const page = parseInt(searchParams.get("page") || "1");
 
   useEffect(() => {
     const getProducts = async () => {
       setLoading(true);
       try {
-        const params: any = {};
+        const params: any = { page };
         if (selectedCategory && selectedCategory !== "All") {
           params.category = selectedCategory;
         }
@@ -26,14 +29,26 @@ const Grid = () => {
         }
         const res = await fetchFilteredProducts(params);
         setProducts(res.data.products || []);
+        setTotalPages(res.data.totalPages || 1);
       } catch (err) {
         setProducts([]);
+        setTotalPages(1);
       } finally {
         setLoading(false);
       }
     };
     getProducts();
-  }, [selectedCategory, query]);
+  }, [selectedCategory, query, page]);
+
+  const goToPage = (newPage: number) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (newPage > 1) {
+      params.set("page", newPage.toString());
+    } else {
+      params.delete("page");
+    }
+    router.push(`?${params.toString()}`);
+  };
 
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
@@ -62,12 +77,26 @@ const Grid = () => {
             ))}
       </div>
       <div className="flex justify-center mt-20 gap-4">
-        <button className="text-white bg-primary p-2 w-10 h-10">1</button>
-        <button className="text-white bg-primary p-2 w-10 h-10">2</button>
-        <button className="text-white bg-primary p-2 w-10 h-10">3</button>
-        <button className="text-white bg-primary p-2 w-10 h-10">
-          <ChevronRight />
-        </button>
+        {Array.from({ length: totalPages }).map((_, i) => (
+          <button
+            key={i}
+            className={`text-white bg-primary p-2 w-10 h-10 ${
+              page === i + 1 ? "opacity-100" : "opacity-60"
+            }`}
+            onClick={() => goToPage(i + 1)}
+            disabled={page === i + 1}
+          >
+            {i + 1}
+          </button>
+        ))}
+        {page < totalPages && (
+          <button
+            className="text-white bg-primary p-2 w-10 h-10"
+            onClick={() => goToPage(page + 1)}
+          >
+            <ChevronRight />
+          </button>
+        )}
       </div>
     </div>
   );

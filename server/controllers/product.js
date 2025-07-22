@@ -74,7 +74,12 @@ export const getProduct = async (req, res) => {
   const { id } = req.params;
   try {
     const product = await Product.findById(id);
-    res.status(200).json(product);
+    if (!product) return res.status(404).json({ message: "Product not found" });
+    const related = await Product.find({
+      category: product.category,
+      _id: { $ne: product._id },
+    }).limit(8);
+    res.status(200).json({ product, related });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
