@@ -1,3 +1,4 @@
+"use client";
 import {
   Facebook,
   Instagram,
@@ -6,9 +7,39 @@ import {
   PhoneCall,
   Twitter,
 } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
+import { sendContact } from "@/lib/api";
+import toast from "react-hot-toast";
 
 const Footer = () => {
+  const [form, setForm] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    message: "",
+  });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      await sendContact(form);
+      toast.success("Message sent successfully!");
+      setForm({ firstName: "", lastName: "", email: "", message: "" });
+    } catch (err) {
+      toast.error("Failed to send message. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
       <h1 className="text-center text-3xl uppercase tracking-widest">
@@ -55,33 +86,53 @@ const Footer = () => {
             </button>
           </div>
         </div>
-        <div className="w-1/2 flex flex-col gap-4">
+        <form className="w-1/2 flex flex-col gap-4" onSubmit={handleSubmit}>
           <div className="flex gap-4">
             <input
               type="text"
+              name="firstName"
               placeholder="First Name"
               className="w-full p-2 border border-primary rounded"
+              value={form.firstName}
+              onChange={handleChange}
+              required
             />
             <input
               type="text"
+              name="lastName"
               placeholder="Last Name"
               className="w-full p-2 border border-primary rounded"
+              value={form.lastName}
+              onChange={handleChange}
+              required
             />
           </div>
           <input
             type="email"
+            name="email"
             placeholder="Email"
             className="w-full p-2 border border-primary rounded"
+            value={form.email}
+            onChange={handleChange}
+            required
           />
           <textarea
+            name="message"
             placeholder="Message"
             className="w-full p-2 border border-primary rounded"
             rows={5}
+            value={form.message}
+            onChange={handleChange}
+            required
           />
-          <button className="bg-primary text-white px-4 py-2 rounded w-fit">
-            Send
+          <button
+            type="submit"
+            className="bg-primary text-white px-4 py-2 rounded w-fit"
+            disabled={loading}
+          >
+            {loading ? "Sending..." : "Send"}
           </button>
-        </div>
+        </form>
       </div>
     </div>
   );

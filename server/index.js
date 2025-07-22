@@ -23,7 +23,7 @@ app.use(
       "http://localhost:3001",
       "https://varzan.com",
       "https://varzan.vercel.app",
-      "https://varza-admin.vercel.app",
+      "https://varzan-admin.vercel.app",
     ],
   })
 );
