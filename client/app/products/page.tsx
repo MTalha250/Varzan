@@ -25,7 +25,22 @@ const Products = () => {
       <div className="flex justify-center">
         <img src="/images/flower.png" className="w-32" />
       </div>
-      <Grid />
+      <Suspense
+        fallback={
+          <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20">
+              {Array.from({ length: 8 }).map((_, index) => (
+                <div key={index} className="w-full animate-pulse pt-2">
+                  <div className="w-full h-64 bg-gray-200" />
+                  <div className="h-6 bg-gray-200 mt-2 mx-auto w-1/2 rounded" />
+                </div>
+              ))}
+            </div>
+          </div>
+        }
+      >
+        <Grid />
+      </Suspense>
       <hr />
     </div>
   );

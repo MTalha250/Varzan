@@ -44,7 +44,7 @@ const EditProduct = () => {
             Authorization: `Bearer ${token}`,
           },
         });
-        const product = productRes.data;
+        const product = productRes.data.product;
         
         setFormData({
           name: product.name || "",
