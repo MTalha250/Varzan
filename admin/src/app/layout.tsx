@@ -50,6 +50,10 @@ export default function RootLayout({
   };
   return (
     <html lang="en">
+      <head>
+        <title>Varzan Admin</title>
+        <meta name="description" content="Varzan Admin Panel" />
+      </head>
       <body className={`${outfit.className} dark:bg-gray-900`}>
         <ThemeProvider>
           <SidebarProvider>{children}</SidebarProvider>
