@@ -28,6 +28,15 @@ const Footer = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (
+      form.firstName === "" ||
+      form.lastName === "" ||
+      form.email === "" ||
+      form.message === ""
+    ) {
+      toast.error("Please fill all the fields");
+      return;
+    }
     setLoading(true);
     try {
       await sendContact(form);
@@ -95,7 +104,6 @@ const Footer = () => {
               className="w-full p-2 border border-primary rounded"
               value={form.firstName}
               onChange={handleChange}
-              required
             />
             <input
               type="text"
@@ -104,7 +112,6 @@ const Footer = () => {
               className="w-full p-2 border border-primary rounded"
               value={form.lastName}
               onChange={handleChange}
-              required
             />
           </div>
           <input
@@ -114,7 +121,6 @@ const Footer = () => {
             className="w-full p-2 border border-primary rounded"
             value={form.email}
             onChange={handleChange}
-            required
           />
           <textarea
             name="message"
@@ -123,11 +129,10 @@ const Footer = () => {
             rows={5}
             value={form.message}
             onChange={handleChange}
-            required
           />
           <button
             type="submit"
-            className="bg-primary text-white px-4 py-2 rounded w-fit"
+            className="bg-primary text-white px-4 py-2 rounded w-fit cursor-pointer"
             disabled={loading}
           >
             {loading ? "Sending..." : "Send"}

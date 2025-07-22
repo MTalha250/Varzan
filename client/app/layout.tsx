@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const bookman = localFont({
   src: "../fonts/bookman.ttf",
@@ -37,6 +38,17 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+        <Toaster
+          position="bottom-right"
+          toastOptions={{
+            className: "",
+            duration: 3000,
+            style: {
+              background: "#333",
+              color: "#fff",
+            },
+          }}
+        />
       </body>
     </html>
   );

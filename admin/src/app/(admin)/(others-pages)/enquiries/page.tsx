@@ -276,8 +276,8 @@ const Enquiries = () => {
       </div>
 
       {/* Contact Detail Modal */}
-      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)}>
-        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full max-w-2xl">
+      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} className="max-w-xl">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-6 w-full">
         {selectedContact && (
             <div className="space-y-6">
               <div className="flex items-center gap-3">
