@@ -214,7 +214,7 @@ const Products = () => {
                             <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                               {product.category}
                             </TableCell>
-                            <TableCell className="px-4 py-3 text-start">
+                            <TableCell className="px-4 py-3 text-start whitespace-nowrap">
                               <div className="text-gray-800 text-theme-sm dark:text-white/90">
                                 {product.details.length > 0 ? (
                                   <div className="flex flex-wrap gap-1">

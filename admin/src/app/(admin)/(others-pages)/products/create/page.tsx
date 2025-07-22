@@ -215,7 +215,7 @@ const CreateProduct = () => {
                     onChange={() => handleInputChange("inStock", true)}
                     className="text-primary-500 focus:ring-primary-500"
                   />
-                  <span className="text-sm">In Stock</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">In Stock</span>
                 </label>
                 <label className="flex items-center gap-2">
                   <input
@@ -225,7 +225,7 @@ const CreateProduct = () => {
                     onChange={() => handleInputChange("inStock", false)}
                     className="text-primary-500 focus:ring-primary-500"
                   />
-                  <span className="text-sm">Out of Stock</span>
+                  <span className="text-sm text-gray-600 dark:text-gray-300">Out of Stock</span>
                 </label>
               </div>
             </div>
@@ -239,7 +239,7 @@ const CreateProduct = () => {
                   onChange={e => handleInputChange("inHighlight", e.target.checked)}
                   className="w-4 h-4 text-primary-500 focus:ring-primary-500"
                 />
-                <span className="text-sm">Highlight this product</span>
+                <span className="text-sm text-gray-600 dark:text-gray-300">Highlight this product</span>
               </label>
             </div>
 

@@ -164,13 +164,13 @@ const Categories = () => {
                 <Table>
                   <TableHeader className="border-b border-gray-100 dark:border-white/[0.05]">
                     <TableRow>
-                      <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
+                      <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 whitespace-nowrap">
                         Category Name
                       </TableCell>
-                      <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
+                      <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 whitespace-nowrap">
                         Products Count
                       </TableCell>
-                      <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
+                      <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400 whitespace-nowrap">
                         Created Date
                       </TableCell>
                       <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
@@ -182,12 +182,12 @@ const Categories = () => {
                     {categories.length > 0 ? (
                       categories.map((category) => (
                         <TableRow key={category._id}>
-                          <TableCell className="px-5 py-4 sm:px-6 text-start">
+                          <TableCell className="px-5 py-4 sm:px-6 text-start whitespace-nowrap">
                             <span className="font-medium text-gray-800 text-theme-sm dark:text-white/90">
                               {category.name}
                             </span>
                           </TableCell>
-                          <TableCell className="px-4 py-3 text-start">
+                          <TableCell className="px-4 py-3 text-start whitespace-nowrap">
                             <Badge color="info" size="sm">
                               {category.products || 0} products
                             </Badge>

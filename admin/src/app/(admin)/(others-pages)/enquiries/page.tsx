@@ -182,9 +182,9 @@ const Enquiries = () => {
                       {contacts.length > 0 ? (
                         contacts.map((contact) => (
                           <TableRow key={contact._id}>
-                            <TableCell className="px-5 py-4 sm:px-6 text-start">
+                            <TableCell className="px-5 py-4 sm:px-6 text-start whitespace-nowrap">
                               <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/20 rounded-full flex items-center justify-center">
+                                <div className="w-10 h-10 bg-primary-100 dark:bg-primary-900/20 rounded-full flex items-center justify-center shrink-0">
                                   <User className="w-5 h-5 text-primary-600 dark:text-primary-400" />
                                 </div>
                                 <div>
@@ -194,7 +194,7 @@ const Enquiries = () => {
                                 </div>
                               </div>
                             </TableCell>
-                            <TableCell className="px-4 py-3 text-start">
+                            <TableCell className="px-4 py-3 text-start whitespace-nowrap">
                               <div className="flex items-center gap-2">
                                 <Mail className="w-4 h-4 text-gray-400" />
                                 <span className="text-gray-600 text-theme-sm dark:text-gray-300">
@@ -202,7 +202,7 @@ const Enquiries = () => {
                                   </span>
                               </div>
                             </TableCell>
-                            <TableCell className="px-4 py-3 text-start">
+                            <TableCell className="px-4 py-3 text-start whitespace-nowrap">
                               <div className="text-gray-600 text-theme-sm dark:text-gray-300 max-w-xs">
                                 {contact.message.length > 100 
                                   ? `${contact.message.substring(0, 100)}...` 
