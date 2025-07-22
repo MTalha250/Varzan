@@ -21,6 +21,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "http://localhost:3001",
+      "https://varzan.com",
       "https://varzan.vercel.app",
       "https://varza-admin.vercel.app",
     ],

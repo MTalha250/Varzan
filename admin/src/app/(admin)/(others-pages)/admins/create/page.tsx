@@ -272,9 +272,9 @@ const CreateAdmin = () => {
             
             <div className="xl:col-span-2">
               <button
-                disabled={loading}
                 type="submit"
-                className="px-4 py-2  text-black dark:text-white bg-cream-500 dark:bg-cream-800 rounded-md hover:bg-cream-700 focus:outline-none focus:ring-2 focus:ring-cream-500 focus:ring-offset-2"
+                disabled={loading}
+                className="px-4 py-2  text-black dark:text-white bg-primary-500 dark:bg-primary-800 rounded-md hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
               >
                 {loading ? "Creating..." : "Create Admin"}
               </button>

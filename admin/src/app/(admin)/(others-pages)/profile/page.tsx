@@ -9,7 +9,6 @@ import ProfilePicUploader from "@/components/profilePicUploader";
 import useAuthStore from "@/store/authStore";
 import toast from "react-hot-toast";
 import axios from "axios";
-import { Admin } from "@/types";
 
 interface AdminProfile {
   _id: string;

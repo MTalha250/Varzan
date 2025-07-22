@@ -117,18 +117,18 @@
   --color-error-900: #7a271a;
   --color-error-950: #55160c;
 
-  --color-cream-25: #fefcf8;
-  --color-cream-50: #fdf9f2;
-  --color-cream-100: #fbf5e8;
-  --color-cream-200: #f8f4dc;
-  --color-cream-300: #f3edc8;
-  --color-cream-400: #ede2a8;
-  --color-cream-500: #e5d485;
-  --color-cream-600: #dbc363;
-  --color-cream-700: #ceb04a;
-  --color-cream-800: #b8943d;
-  --color-cream-900: #9a7a34;
-  --color-cream-950: #6d542a;
+  --color-primary-25: #eaf3f4;
+  --color-primary-50: #dbe9ea;
+  --color-primary-100: #c6dbdd;
+  --color-primary-200: #b0cdd0;
+  --color-primary-300: #9bc0c3;
+  --color-primary-400: #8ab0b2;
+  --color-primary-500: #8ab0b2;
+  --color-primary-600: #7ca0a2;
+  --color-primary-700: #6b8c8e;
+  --color-primary-800: #5a787a;
+  --color-primary-900: #4a6466;
+  --color-primary-950: #2e3d3e;
 
   --color-warning-25: #fffcf5;
   --color-warning-50: #fffaeb;
@@ -210,7 +210,7 @@
 }
 
 @utility menu-item-active {
-  @apply bg-cream-50 text-cream-700 dark:bg-cream-500/[0.12] dark:text-cream-400;
+  @apply bg-primary-50 text-primary-700 dark:bg-primary-500/[0.12] dark:text-primary-400;
 }
 
 @utility menu-item-inactive {
@@ -222,7 +222,7 @@
 }
 
 @utility menu-item-icon-active {
-  @apply text-cream-700 dark:text-cream-400;
+  @apply text-primary-700 dark:text-primary-400;
 }
 
 @utility menu-item-icon-inactive {
@@ -234,7 +234,7 @@
 }
 
 @utility menu-item-arrow-active {
-  @apply rotate-180 text-cream-700 dark:text-cream-400;
+  @apply rotate-180 text-primary-700 dark:text-primary-400;
 }
 
 @utility menu-item-arrow-inactive {
@@ -246,7 +246,7 @@
 }
 
 @utility menu-dropdown-item-active {
-  @apply bg-cream-50 text-cream-700 dark:bg-cream-500/[0.12] dark:text-cream-400;
+  @apply bg-primary-50 text-primary-700 dark:bg-primary-500/[0.12] dark:text-primary-400;
 }
 
 @utility menu-dropdown-item-inactive {
@@ -254,15 +254,15 @@
 }
 
 @utility menu-dropdown-badge {
-  @apply block rounded-full px-2.5 py-0.5 text-xs font-medium uppercase text-cream-700 dark:text-cream-400;
+  @apply block rounded-full px-2.5 py-0.5 text-xs font-medium uppercase text-primary-700 dark:text-primary-400;
 }
 
 @utility menu-dropdown-badge-active {
-  @apply bg-cream-100 dark:bg-cream-500/20;
+  @apply bg-primary-100 dark:bg-primary-500/20;
 }
 
 @utility menu-dropdown-badge-inactive {
-  @apply bg-cream-50 group-hover:bg-cream-100 dark:bg-cream-500/15 dark:group-hover:bg-cream-500/20;
+  @apply bg-primary-50 group-hover:bg-primary-100 dark:bg-primary-500/15 dark:group-hover:bg-primary-500/20;
 }
 
 @utility no-scrollbar {
@@ -350,7 +350,7 @@
 
 .flatpickr-months .flatpickr-prev-month:hover svg,
 .flatpickr-months .flatpickr-next-month:hover svg {
-  @apply stroke-cream-700;
+  @apply stroke-primary-700;
 }
 .flatpickr-calendar.arrowTop:before,
 .flatpickr-calendar.arrowTop:after {
@@ -469,7 +469,7 @@ span.flatpickr-weekday,
 .flatpickr-day.startRange.nextMonthDay,
 .flatpickr-day.endRange.nextMonthDay {
   background: #f8f4dc;
-  @apply border-cream-200! bg-cream-200! hover:border-cream-200! hover:bg-cream-200!;
+  @apply border-primary-200! bg-primary-200! hover:border-primary-200! hover:bg-primary-200!;
 }
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
@@ -533,7 +533,7 @@ span.flatpickr-weekday,
   @apply hidden;
 }
 .fc-addEventButton-button {
-  @apply rounded-lg! border-0! bg-cream-500! px-4! py-2.5! text-sm! font-medium! hover:bg-cream-600! focus:shadow-none!;
+  @apply rounded-lg! border-0! bg-primary-500! px-4! py-2.5! text-sm! font-medium! hover:bg-primary-600! focus:shadow-none!;
 }
 .fc-toolbar-title {
   @apply text-lg! font-medium! text-gray-800 dark:text-white/90;
@@ -602,7 +602,7 @@ span.flatpickr-weekday,
   @apply border-error-50 bg-error-50;
 }
 .event-fc-color.fc-bg-primary {
-  @apply border-cream-50 bg-cream-50;
+  @apply border-primary-50 bg-primary-50;
 }
 .event-fc-color.fc-bg-warning {
   @apply border-orange-50 bg-orange-50;
@@ -614,7 +614,7 @@ span.flatpickr-weekday,
   @apply bg-error-500;
 }
 .event-fc-color.fc-bg-primary .fc-daygrid-event-dot {
-  @apply bg-cream-500;
+  @apply bg-primary-500;
 }
 .event-fc-color.fc-bg-warning .fc-daygrid-event-dot {
   @apply bg-orange-500;
@@ -713,13 +713,13 @@ span.flatpickr-weekday,
   @apply bg-gray-50! dark:bg-gray-900!;
 }
 .jvectormap-region.jvectormap-element {
-  @apply fill-gray-300! hover:fill-cream-500! dark:fill-gray-700! dark:hover:fill-cream-500!;
+  @apply fill-gray-300! hover:fill-primary-500! dark:fill-gray-700! dark:hover:fill-primary-500!;
 }
 .jvectormap-marker.jvectormap-element {
   @apply stroke-gray-200! dark:stroke-gray-800!;
 }
 .jvectormap-tip {
-  @apply bg-cream-500! border-none! px-2! py-1!;
+  @apply bg-primary-500! border-none! px-2! py-1!;
 }
 .jvectormap-zoomin,
 .jvectormap-zoomout {
@@ -727,17 +727,17 @@ span.flatpickr-weekday,
 }
 
 .form-check-input:checked ~ span {
-  @apply border-[6px] border-cream-500 bg-cream-500 dark:border-cream-500;
+  @apply border-[6px] border-primary-500 bg-primary-500 dark:border-primary-500;
 }
 
 .taskCheckbox:checked ~ .box span {
-  @apply opacity-100 bg-cream-500;
+  @apply opacity-100 bg-primary-500;
 }
 .taskCheckbox:checked ~ p {
   @apply text-gray-400 line-through;
 }
 .taskCheckbox:checked ~ .box {
-  @apply border-cream-500 bg-cream-500 dark:border-cream-500;
+  @apply border-primary-500 bg-primary-500 dark:border-primary-500;
 }
 
 .task {

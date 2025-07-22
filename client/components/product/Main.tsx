@@ -1,23 +1,45 @@
+"use client";
 import { Facebook, Instagram, Phone, Twitter } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
+import { fetchProductById } from "@/lib/api";
+import type { Product } from "@/types";
 
 const Main = () => {
+  const { id } = useParams();
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      setLoading(true);
+      try {
+        const res = await fetchProductById(id as string);
+        setProduct(res.data);
+      } catch (err) {
+        setProduct(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    if (id) getProduct();
+  }, [id]);
+
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 flex gap-10 pb-20">
       <img
-        src="/images/sample.jpg"
-        alt=""
+        src={product?.images[0]}
+        alt={product?.name}
         className="w-2/5 h-[75vh] object-cover"
       />
       <div className="w-3/5">
-        <h1 className="text-4xl text-primary">Sample Product</h1>
-        <p className="text-gray-500 mt-2">Category: Sample Category</p>
+        <h1 className="text-4xl text-primary">{product?.name}</h1>
+        <p className="text-gray-500 mt-2">Category: {product?.category}</p>
         <p className="mt-4 text-xl underline underline-offset-4">Details: </p>
         <ul className="list-disc list-inside mt-2">
-          <li>Sample Category</li>
-          <li>Sample Fabric</li>
-          <li>Sample Color</li>
-          <li>100% Adda Work</li>
+          {product?.details.map((detail, i) => (
+            <li key={i}>{detail}</li>
+          ))}
         </ul>
         <p className="mt-4 text-xl underline underline-offset-4">About Us: </p>
         <p className="mt-2">
@@ -49,10 +71,9 @@ const Main = () => {
           </div>
         </div>
         <div className="mt-8 flex items-center gap-5">
-          <img src="/images/sample.jpg" alt="" className="w-20" />
-          <img src="/images/sample.jpg" alt="" className="w-20" />
-          <img src="/images/sample.jpg" alt="" className="w-20" />
-          <img src="/images/sample.jpg" alt="" className="w-20" />
+          {product?.images.map((img, i) => (
+            <img src={img} alt="" className="w-20" key={i} />
+          ))}
         </div>
       </div>
     </div>

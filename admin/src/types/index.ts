@@ -16,22 +16,10 @@ export interface Admin {
 export interface Product {
   _id: string;
   name: string;
-  type: "template" | "print";
-  category: string;
-  price: number;
-  discount: number;
-  finalPrice: number;
-  // Size-specific frame pricing
-  sizeSpecificPricing?: Record<string, {
-    framePrice: number;
-    frameDiscount: number;
-  }>;
-  inStock: boolean;
   images: string[];
-  sizes?: string[];
-  framedPrint: boolean;
-  description?: string;
-  productLink?: string;
+  category: string;
+  details: string[];
+  inStock: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -40,7 +28,6 @@ export interface Product {
 export interface Category {
   _id: string;
   name: string;
-  type: "template" | "print";
   products?: number;
   createdAt: string;
   updatedAt: string;
@@ -49,12 +36,10 @@ export interface Category {
 // Contact/Enquiry Types
 export interface Contact {
   _id: string;
-  name: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  whatsapp?: string;
-  services: string[];
-  references: string[];
-  mediumOfContact: string;
+  message: string;
   createdAt: string;
 }
 
@@ -120,6 +105,7 @@ export interface Payment {
 // Dashboard Stats Types
 export interface DashboardStats {
   productCount: number;
+  highlightedProductCount: number;
   orderCount: number;
   completedOrders: Order[];
   contactCount: number;
@@ -150,29 +136,15 @@ export interface PaginatedResponse<T> {
 
 // Form Types
 export interface ProductFormData {
-  type: string;
   name: string;
-  description: string;
-  price: string;
-  discount: string;
-  // Size-specific frame pricing
-  sizeSpecificPricing: Record<string, {
-    framePrice: string;
-    frameDiscount: string;
-  }>;
-  category: string;
-  inStock: boolean;
-  productLink: string;
-  sizes: string[];
   images: string[];
-  digitalPrint: boolean;
-  framedPrint: boolean;
-  highQualityPrints: Record<string, string>;
+  category: string;
+  details: string[];
+  inStock: boolean;
 }
 
 export interface CategoryFormData {
   name: string;
-  type: string;
 }
 
 export interface AdminFormData {
@@ -286,12 +258,9 @@ export interface LoginResponse {
 
 // Filter Types
 export interface ProductFilters {
-  type?: "template" | "print" | "all";
   category?: string;
   search?: string;
   inStock?: boolean;
-  minPrice?: number;
-  maxPrice?: number;
 }
 
 export interface OrderFilters {

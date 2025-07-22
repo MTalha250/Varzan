@@ -15,6 +15,7 @@ interface DashboardStats {
   totalRevenue: number;
   adminCount: number;
   categoryCount: number;
+  highlightedProductCount: number;
 }
 
 export const Metrics = () => {
@@ -56,45 +57,16 @@ export const Metrics = () => {
       color: "blue",
       bgColor: "bg-blue-100 dark:bg-blue-900/20",
       iconColor: "text-blue-600 dark:text-blue-400",
-      description: "Active products",
+      description: "Total Products",
     },
     {
-      title: "Orders",
-      value: stats?.orderCount || 0,
-      icon: ShoppingCart,
-      color: "green",
-      bgColor: "bg-green-100 dark:bg-green-900/20",
-      iconColor: "text-green-600 dark:text-green-400",
-      description: "Total orders",
-    },
-    {
-      title: "Enquiries",
-      value: stats?.contactCount || 0,
-      icon: MessageSquare,
-      color: "purple",
-      bgColor: "bg-purple-100 dark:bg-purple-900/20",
-      iconColor: "text-purple-600 dark:text-purple-400",
-      description: "Customer enquiries",
-    },
-    {
-      title: "Successful Payments",
-      value: stats?.successfulPayments || 0,
-      icon: CreditCard,
-      color: "emerald",
-      bgColor: "bg-emerald-100 dark:bg-emerald-900/20",
-      iconColor: "text-emerald-600 dark:text-emerald-400",
-      description: `${getSuccessRate()}% success rate`,
-      trend: parseFloat(getSuccessRate().toString()) >= 80 ? "up" : "down",
-    },
-    {
-      title: "Total Revenue",
-      value: `£${stats?.totalRevenue?.toFixed(2) || "0.00"}`,
-      icon: DollarSign,
-      color: "amber",
-      bgColor: "bg-amber-100 dark:bg-amber-900/20",
-      iconColor: "text-amber-600 dark:text-amber-400",
-      description: "From successful payments",
-      isRevenue: true,
+      title: "Highlighted Products",
+      value: stats?.highlightedProductCount || 0,
+      icon: TrendingUp,
+      color: "yellow",
+      bgColor: "bg-yellow-100 dark:bg-yellow-900/20",
+      iconColor: "text-yellow-600 dark:text-yellow-400",
+      description: "Featured on homepage",
     },
     {
       title: "Categories",
@@ -104,6 +76,15 @@ export const Metrics = () => {
       bgColor: "bg-indigo-100 dark:bg-indigo-900/20",
       iconColor: "text-indigo-600 dark:text-indigo-400",
       description: "Product categories",
+    },
+    {
+      title: "Enquiries",
+      value: stats?.contactCount || 0,
+      icon: MessageSquare,
+      color: "purple",
+      bgColor: "bg-purple-100 dark:bg-purple-900/20",
+      iconColor: "text-purple-600 dark:text-purple-400",
+      description: "Customer enquiries",
     },
   ];
 
@@ -131,7 +112,6 @@ export const Metrics = () => {
     <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 md:gap-6">
       {metrics.map((metric, index) => {
         const Icon = metric.icon;
-        const TrendIcon = metric.trend === "up" ? TrendingUp : TrendingDown;
         
         return (
           <div key={index} className="rounded-2xl border border-gray-200 bg-white p-6 dark:border-gray-800 dark:bg-white/[0.03] hover:shadow-lg transition-shadow duration-200">
@@ -139,15 +119,6 @@ export const Metrics = () => {
               <div className={`flex items-center justify-center w-12 h-12 rounded-xl ${metric.bgColor}`}>
                 <Icon className={`${metric.iconColor}`} size={20} />
               </div>
-              {metric.trend && (
-                <TrendIcon 
-                  className={`w-4 h-4 ${
-                    metric.trend === "up" 
-                      ? "text-green-500" 
-                      : "text-red-500"
-                  }`} 
-                />
-              )}
             </div>
             
             <div className="space-y-1">
@@ -155,9 +126,7 @@ export const Metrics = () => {
                 {metric.title}
               </h3>
               <div className="flex items-baseline space-x-1">
-                <h4 className={`font-bold text-gray-800 dark:text-white/90 ${
-                  metric.isRevenue ? "text-xl" : "text-2xl"
-                }`}>
+                <h4 className="font-bold text-gray-800 dark:text-white/90 text-2xl">
                   {metric.value}
                 </h4>
               </div>

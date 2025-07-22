@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/table";
 import Badge from "@/components/ui/badge/Badge";
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight, Eye, Pencil, Plus, Trash2, Loader2, Filter } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pencil, Plus, Trash2, Loader2 } from "lucide-react";
 import Link from "next/link";
 import axios from "axios";
 import useAuthStore from "@/store/authStore";
@@ -24,7 +24,6 @@ const Products = () => {
   const [totalEntries, setTotalEntries] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
-  const [filterType, setFilterType] = useState<"all" | "template" | "print">("all");
   const itemsPerPage = 12;
   
   const { token } = useAuthStore();
@@ -34,15 +33,8 @@ const Products = () => {
       setLoading(true);
       let url = `${process.env.NEXT_PUBLIC_API_URL}/product?page=${currentPage}&limit=${itemsPerPage}`;
       
-      if (filterType !== "all") {
-        url = `${process.env.NEXT_PUBLIC_API_URL}/product/type/${filterType}?page=${currentPage}&limit=${itemsPerPage}`;
-      }
-      
       if (searchTerm) {
         url = `${process.env.NEXT_PUBLIC_API_URL}/product/filter?query=${searchTerm}&page=${currentPage}&limit=${itemsPerPage}`;
-        if (filterType !== "all") {
-          url += `&type=${filterType}`;
-        }
       }
       
       const response = await axios.get(url);
@@ -59,7 +51,7 @@ const Products = () => {
   
   useEffect(() => {
     fetchProducts();
-  }, [currentPage, filterType]);
+  }, [currentPage]);
   
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -77,11 +69,6 @@ const Products = () => {
   
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-  };
-
-  const handleFilterChange = (type: "all" | "template" | "print") => {
-    setFilterType(type);
-    setCurrentPage(1);
   };
 
   const handleDeleteProduct = async (id: string) => {
@@ -132,7 +119,7 @@ const Products = () => {
           onClick={() => goToPage(i)}
           className={`flex items-center justify-center w-10 h-10 rounded-md border ${
             currentPage === i
-              ? "border-cream-500 bg-cream-50 text-cream-700 dark:bg-cream-900/20 dark:text-cream-400 dark:border-cream-800"
+              ? "border-primary-500 bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400 dark:border-primary-800"
               : "border-gray-200 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
           }`}
         >
@@ -158,49 +145,14 @@ const Products = () => {
                   placeholder="Search products..."
                   value={searchTerm}
                   onChange={handleSearchChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cream-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
                 />
-              </div>
-
-              {/* Filter Buttons */}
-              <div className="flex items-center gap-2">
-                <Filter size={16} className="text-gray-500" />
-                <button
-                  onClick={() => handleFilterChange("all")}
-                  className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                    filterType === "all"
-                      ? "bg-cream-500 text-black dark:bg-cream-800 dark:text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300"
-                  }`}
-                >
-                  All
-                </button>
-                <button
-                  onClick={() => handleFilterChange("template")}
-                  className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                    filterType === "template"
-                      ? "bg-cream-500 text-black dark:bg-cream-800 dark:text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300"
-                  }`}
-                >
-                  Templates
-                </button>
-                <button
-                  onClick={() => handleFilterChange("print")}
-                  className={`px-3 py-1.5 text-sm rounded-md transition-colors ${
-                    filterType === "print"
-                      ? "bg-cream-500 text-black dark:bg-cream-800 dark:text-white"
-                      : "bg-gray-100 text-gray-700 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300"
-                  }`}
-                >
-                  Prints
-                </button>
               </div>
 
               {/* Add Button */}
               <Link
                 href="/products/create"
-                className="inline-flex items-center px-4 py-2 bg-cream-500 text-black dark:text-white rounded-lg hover:bg-cream-700 focus:outline-none focus:ring-2 focus:ring-cream-500 transition-colors dark:bg-cream-800 dark:hover:bg-cream-700"
+                className="inline-flex items-center px-4 py-2 bg-primary-500 text-black dark:text-white rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors dark:bg-primary-800 dark:hover:bg-primary-700"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Add Product
@@ -209,7 +161,7 @@ const Products = () => {
 
             {loading ? (
               <div className="flex items-center justify-center p-8">
-                <Loader2 className="w-8 h-8 animate-spin text-cream-500" />
+                <Loader2 className="w-8 h-8 animate-spin text-primary-500" />
               </div>
             ) : (
               <>
@@ -221,13 +173,10 @@ const Products = () => {
                           Product
                         </TableCell>
                         <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                          Type
-                        </TableCell>
-                        <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                           Category
                         </TableCell>
                         <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
-                          Price
+                          Details
                         </TableCell>
                         <TableCell isHeader className="px-5 py-3 font-medium text-gray-500 text-start text-theme-xs dark:text-gray-400">
                           Stock
@@ -262,24 +211,26 @@ const Products = () => {
                                 </div>
                               </div>
                             </TableCell>
-                            <TableCell className="px-4 py-3 text-start">
-                              <Badge
-                                color={product.type === "template" ? "warning" : "info"}
-                                size="sm"
-                              >
-                                {product.type}
-                              </Badge>
-                            </TableCell>
                             <TableCell className="px-4 py-3 text-gray-500 text-start text-theme-sm dark:text-gray-400">
                               {product.category}
                             </TableCell>
                             <TableCell className="px-4 py-3 text-start">
                               <div className="text-gray-800 text-theme-sm dark:text-white/90">
-                                £{product.finalPrice}
-                                {product.type === "print" && product.framedPrint && product.sizeSpecificPricing && Object.keys(product.sizeSpecificPricing).length > 0 && (
-                                  <p className="text-xs text-gray-500">
-                                    Frame pricing configured for {Object.keys(product.sizeSpecificPricing).length} size(s)
-                                  </p>
+                                {product.details.length > 0 ? (
+                                  <div className="flex flex-wrap gap-1">
+                                    {product.details.slice(0, 3).map((detail, index) => (
+                                      <span key={index} className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded dark:bg-gray-700 dark:text-gray-300">
+                                        {detail}
+                                      </span>
+                                    ))}
+                                    {product.details.length > 3 && (
+                                      <span className="text-xs text-gray-500">
+                                        +{product.details.length - 3} more
+                                      </span>
+                                    )}
+                                  </div>
+                                ) : (
+                                  <span className="text-gray-400 text-xs">No details</span>
                                 )}
                               </div>
                             </TableCell>
@@ -293,12 +244,6 @@ const Products = () => {
                             </TableCell>
                             <TableCell className="px-4 py-3">
                               <div className="flex items-center gap-2">
-                                <Link
-                                  href={`/products/${product._id}`}
-                                  className="p-1.5 rounded-md text-cream-600 hover:bg-cream-50 dark:text-cream-400 dark:hover:bg-cream-900/20"
-                                >
-                                  <Eye className="w-4 h-4" />
-                                </Link>
                                 <Link
                                   href={`/products/edit/${product._id}`}
                                   className="p-1.5 rounded-md text-green-600 hover:bg-green-50 dark:text-green-400 dark:hover:bg-green-900/20"
@@ -317,7 +262,7 @@ const Products = () => {
                         ))
                       ) : (
                         <TableRow>
-                          <TableCell colSpan={6} className="px-5 py-8 text-center text-gray-500 dark:text-gray-400">
+                          <TableCell colSpan={5} className="px-5 py-8 text-center text-gray-500 dark:text-gray-400">
                             No products found
                           </TableCell>
                         </TableRow>

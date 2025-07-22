@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "name": "cosmicway-studio",
+  "name": "varzan",
   "builds": [
     {
       "src": "index.js",

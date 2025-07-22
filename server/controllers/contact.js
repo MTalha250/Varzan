@@ -1,16 +1,13 @@
 import Contact from "../models/contact.js";
 
 export const createContact = async (req, res) => {
-  const { name, email, whatsapp, services, references, mediumOfContact } =
-    req.body;
+  const { firstName, lastName, email, message } = req.body;
   try {
     const contact = await Contact.create({
-      name,
+      firstName,
+      lastName,
       email,
-      whatsapp,
-      services,
-      references,
-      mediumOfContact,
+      message,
     });
     res.status(201).json({ message: "Message sent successfully", contact });
   } catch (error) {

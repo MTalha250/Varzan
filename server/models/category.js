@@ -7,11 +7,6 @@ const categorySchema = new mongoose.Schema(
       unique: true,
       required: true,
     },
-    type: {
-      type: String,
-      required: true,
-      enum: ["template", "print"],
-    },
   },
   {
     timestamps: true,

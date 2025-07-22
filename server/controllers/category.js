@@ -2,9 +2,9 @@ import Category from "../models/category.js";
 import Product from "../models/product.js";
 
 export const createCategory = async (req, res) => {
-  const { name, type } = req.body;
+  const { name } = req.body;
   try {
-    const newCategory = await Category.create({ name, type });
+    const newCategory = await Category.create({ name });
     res
       .status(201)
       .json({ message: "Category created successfully", newCategory });
@@ -43,11 +43,11 @@ export const getCategory = async (req, res) => {
 
 export const updateCategory = async (req, res) => {
   const { id } = req.params;
-  const { name, type } = req.body;
+  const { name } = req.body;
   try {
     const category = await Category.findByIdAndUpdate(
       id,
-      { name, type },
+      { name },
       { new: true }
     );
     res

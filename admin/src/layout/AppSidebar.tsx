@@ -8,7 +8,7 @@ import {
   GridIcon,
   HorizontaLDots,
 } from "../icons/index";
-import { ChevronDown, Settings,Folder, Package, Tags, ShoppingCart, CreditCard, MessageSquare, Users } from "lucide-react";
+import { ChevronDown, Settings, Package, Tags, MessageSquare, Users } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -29,24 +29,9 @@ const navItems: NavItem[] = [
     path: "/products",
   },
   {
-    icon: <Folder />,
-    name: "Projects",
-    path: "/projects",
-  },
-  {
     icon: <Tags />,
     name: "Categories",
     path: "/categories",
-  },
-  {
-    icon: <ShoppingCart />,
-    name: "Orders",
-    path: "/orders",
-  },
-  {
-    icon: <CreditCard />,
-    name: "Payments",
-    path: "/payments",
   },
   {
     icon: <MessageSquare />,
@@ -103,7 +88,7 @@ const AppSidebar: React.FC = () => {
                   className={`ml-auto w-5 h-5 transition-transform duration-200  ${
                     openSubmenu?.type === menuType &&
                     openSubmenu?.index === index
-                      ? "rotate-180 text-cream-700"
+                      ? "rotate-180 text-primary-700"
                       : ""
                   }`}
                 />
@@ -276,40 +261,22 @@ const AppSidebar: React.FC = () => {
           {isExpanded || isHovered || isMobileOpen ? (
             <div className="flex items-center gap-2">
               <Image
-                className="dark:hidden"
-                src="/images/logo/logo.PNG"
+                src="/images/logo/logo-icon.png"
                 alt="Logo"
-                width={60}
-                height={60}
+                width={40}
+                height={40}
               />
-              <Image
-                className="hidden invert dark:block"
-                src="/images/logo/logo.PNG"
-                alt="Logo"
-                width={60}
-                height={60}
-              />
-              <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
-                Cosmicway Studio
+              <h1 className="text-2xl font-semibold text-gray-900 dark:text-white">
+                 Varzan Admin
               </h1>
             </div>
           ) : (
-            <>
             <Image
-              src="/images/logo/logo.PNG"
-              className="dark:hidden"
+              src="/images/logo/logo-icon.png"
               alt="Logo"
-              width={40}
-              height={40}
+              width={30}
+              height={30}
             />
-            <Image
-              src="/images/logo/logo.PNG"
-              className="hidden invert dark:block"
-              alt="Logo"
-              width={40}
-              height={40}
-            />
-            </>
           )}
         </Link>
       </div>

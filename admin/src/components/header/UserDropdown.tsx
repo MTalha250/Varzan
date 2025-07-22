@@ -29,7 +29,7 @@ function toggleDropdown(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
         <span className="mr-3 overflow-hidden rounded-full h-11 w-11">
           <img
           className="object-cover w-full h-full"
-            src={ user?.profileImage || "/images/user/user-34.jpg"}
+            src={ user?.profileImage || "/images/default-avatar.jpg"}
             alt="User"
           />
         </span>

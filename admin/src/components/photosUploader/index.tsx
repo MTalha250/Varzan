@@ -110,7 +110,7 @@ export default function PhotosUploader({
               <button
                 type="button"
                 onClick={(ev) => removePhoto(ev, link)}
-                className="absolute right-1 top-1 rounded-full bg-cream-500 bg-opacity-80 p-1 text-white hover:bg-cream-600 transition-colors"
+                className="absolute right-1 top-1 rounded-full bg-primary-500 bg-opacity-80 p-1 text-white hover:bg-primary-600 transition-colors"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -201,7 +201,7 @@ export default function PhotosUploader({
             )}
             {isUploading && (
               <>
-                <div className="w-6 h-6 border-2 border-gray-300 border-t-cream-500 rounded-full animate-spin"></div>
+                <div className="w-6 h-6 border-2 border-gray-300 border-t-primary-500 rounded-full animate-spin"></div>
                 <span className="text-xs">Uploading...</span>
               </>
             )}

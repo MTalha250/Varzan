@@ -1,39 +1,27 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
+import { fetchCategories } from "@/lib/api";
+import type { Category } from "@/types";
 
 const Categories = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const selectedCategory = searchParams.get("category") || "All";
+  const [categories, setCategories] = useState<Category[]>([]);
 
-  const categories = [
-    {
-      name: "Bridal",
-    },
-    {
-      name: "Maxi",
-    },
-    {
-      name: "Lehenga",
-    },
-    {
-      name: "Mehndi",
-    },
-    {
-      name: "Shirts",
-    },
-    {
-      name: "Frock",
-    },
-    {
-      name: "Gown",
-    },
-    {
-      name: "Others",
-    },
-  ];
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const res = await fetchCategories();
+        setCategories(res.data || []);
+      } catch (err) {
+        setCategories([]);
+      }
+    };
+    getCategories();
+  }, []);
 
   const handleCategoryClick = (categoryName: string) => {
     const params = new URLSearchParams(searchParams);
@@ -58,9 +46,9 @@ const Categories = () => {
         >
           <h2 className="font-engravers text-xl">All</h2>
         </button>
-        {categories.map((category, index) => (
+        {categories.map((category) => (
           <button
-            key={index}
+            key={category._id}
             onClick={() => handleCategoryClick(category.name)}
             className={`border rounded-full py-1 px-8 cursor-pointer transition-all duration-300 ${
               selectedCategory === category.name

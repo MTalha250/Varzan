@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 
 const contactSchema = new mongoose.Schema(
   {
-    name: {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
       type: String,
       required: true,
     },
@@ -10,18 +14,7 @@ const contactSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    whatsapp: {
-      type: String,
-    },
-    services: {
-      type: [String],
-      default: [],
-    },
-    references: {
-      type: [String],
-      default: [],
-    },
-    mediumOfContact: {
+    message: {
       type: String,
       required: true,
     },

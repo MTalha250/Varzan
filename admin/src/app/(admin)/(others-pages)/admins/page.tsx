@@ -25,7 +25,7 @@ const Admins = () => {
   const [totalPages, setTotalPages] = useState(0);
   const itemsPerPage = 10;
   
-  const { token } = useAuthStore();
+  const { user, token } = useAuthStore();
   
   const fetchAdmins = async () => {
     try {
@@ -66,6 +66,10 @@ const Admins = () => {
   };
   
   const handleDeleteAdmin = async (id: string) => {
+    if (user?._id === id) {
+      toast.error("You cannot delete yourself");
+      return;
+    }
     if (confirm("Are you sure you want to delete this admin?")) {
       try {
         await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/admin/${id}`, {
@@ -117,7 +121,7 @@ const Admins = () => {
         onClick={() => goToPage(1)}
         className={`flex items-center justify-center w-10 h-10 rounded-md border ${
           currentPage === 1
-            ? "border-cream-500 bg-cream-50 text-cream-700 dark:bg-cream-900/20 dark:text-cream-400 dark:border-cream-800"
+            ? "border-primary-500 bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400 dark:border-primary-800"
             : "border-gray-200 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
         }`}
       >
@@ -143,7 +147,7 @@ const Admins = () => {
             onClick={() => goToPage(i)}
             className={`flex items-center justify-center w-10 h-10 rounded-md border ${
               currentPage === i
-                ? "border-cream-500 bg-cream-50 text-cream-700 dark:bg-cream-900/20 dark:text-cream-400 dark:border-cream-800"
+                ? "border-primary-500 bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400 dark:border-primary-800"
                 : "border-gray-200 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
             }`}
           >
@@ -170,7 +174,7 @@ const Admins = () => {
           onClick={() => goToPage(totalPages)}
           className={`flex items-center justify-center w-10 h-10 rounded-md border ${
             currentPage === totalPages
-              ? "border-cream-500 bg-cream-50 text-cream-700 dark:bg-cream-900/20 dark:text-cream-400 dark:border-cream-800"
+              ? "border-primary-500 bg-primary-50 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400 dark:border-primary-800"
               : "border-gray-200 bg-white text-gray-500 hover:bg-gray-50 dark:border-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:hover:bg-gray-700"
           }`}
         >
@@ -195,7 +199,7 @@ const Admins = () => {
                   placeholder="Search admins..."
                   value={searchTerm}
                   onChange={handleSearchChange}
-                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-cream-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
+                  className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 dark:bg-gray-800 dark:border-gray-700 dark:text-white"
                 />
                 <svg
                   className="absolute right-3 top-2.5 h-5 w-5 text-gray-400 dark:text-gray-500"
@@ -214,7 +218,7 @@ const Admins = () => {
               </div>
               <Link
                 href="/admins/create"
-                className="inline-flex items-center px-4 py-2 bg-cream-500 text-black dark:text-white rounded-lg hover:bg-cream-700 focus:outline-none focus:ring-2 focus:ring-cream-500 transition-colors dark:bg-cream-800 dark:hover:bg-cream-700 dark:focus:ring-cream-500"
+                className="inline-flex items-center px-4 py-2 bg-primary-500 text-black dark:text-white rounded-lg hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 transition-colors dark:bg-primary-800 dark:hover:bg-primary-700 dark:focus:ring-primary-500"
               >
                 <Plus className="w-4 h-4 mr-2" />
                 Add Admin
@@ -301,7 +305,7 @@ const Admins = () => {
               <div>
                 {loading ?
                 <div className="flex items-center justify-center h-32">
-                <Loader2 className="animate-spin text-cream-500" size={24} />
+                <Loader2 className="animate-spin text-primary-500" size={24} />
                 </div> :
                 filteredAdmins.length === 0 ? (
                   <div className="px-5 py-4 text-center text-gray-500 dark:text-gray-400">

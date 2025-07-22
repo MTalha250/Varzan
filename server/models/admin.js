@@ -4,7 +4,6 @@ const adminSchema = new mongoose.Schema(
   {
     profileImage: {
       type: String,
-      required: true,
     },
     name: {
       type: String,
