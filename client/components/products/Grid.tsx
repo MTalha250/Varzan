@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import { fetchFilteredProducts } from "@/lib/api";
 import type { Product } from "@/types";
 import { useSearchParams, useRouter } from "next/navigation";
+import { Skeleton } from "../ui/skeleton";
 
 const Grid = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -55,9 +56,9 @@ const Grid = () => {
       <div className="grid grid-cols-2 md:grid-cols-3  gap-4 sm:gap-8 md:gap-10 lg:gap-20">
         {loading
           ? Array.from({ length: 8 }).map((_, index) => (
-              <div key={index} className="w-full animate-pulse pt-2">
-                <div className="w-full h-64 bg-gray-200" />
-                <div className="h-6 bg-gray-200 mt-2 mx-auto w-1/2 rounded" />
+              <div key={index} className="w-full pt-2">
+                <Skeleton className="h-[500px] w-full" />
+                <Skeleton className="h-6 w-1/2 mx-auto mt-2 rounded" />
               </div>
             ))
           : products.map((product) => (
