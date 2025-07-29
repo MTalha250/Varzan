@@ -57,7 +57,7 @@ const Grid = () => {
         {loading
           ? Array.from({ length: 8 }).map((_, index) => (
               <div key={index} className="w-full pt-2">
-                <Skeleton className="h-[500px] w-full" />
+                <Skeleton className="h-80 w-full" />
                 <Skeleton className="h-6 w-1/2 mx-auto mt-2 rounded" />
               </div>
             ))
