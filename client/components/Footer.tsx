@@ -51,16 +51,16 @@ const Footer = () => {
 
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
-      <h1 className="text-center text-3xl uppercase tracking-widest">
+      <h1 className="text-center text-xl sm:text-2xl md:text-3xl uppercase tracking-widest">
         Contact Us
       </h1>
-      <p className="text-center text-primary mt-8 max-w-2xl mx-auto">
+      <p className="text-justify sm:text-center text-primary mt-8 max-w-2xl mx-auto">
         If you have questions or comments, please get a hold of us in whichever
         way is most convenient. Ask away. There is no reasonable question that
         our team cannot answer.
       </p>
-      <div className="flex mt-16">
-        <div className="w-1/2">
+      <div className="flex flex-col sm:flex-row mt-16">
+        <div className="w-full sm:w-1/2">
           <h2 className="text-lg">GET IN TOUCH</h2>
           <ul className="mt-4 space-y-4">
             <li className="flex items-center gap-2">
@@ -95,7 +95,10 @@ const Footer = () => {
             </button>
           </div>
         </div>
-        <form className="w-1/2 flex flex-col gap-4" onSubmit={handleSubmit}>
+        <form
+          className="w-full sm:w-1/2 mt-8 sm:mt-0 flex flex-col gap-4"
+          onSubmit={handleSubmit}
+        >
           <div className="flex gap-4">
             <input
               type="text"

@@ -29,28 +29,33 @@ const Main = () => {
     if (id) getProduct();
   }, [id]);
 
-  // Do not change any design, just use fetched product
   return (
     <>
-      <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 flex gap-10 pb-20">
+      <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 flex flex-col md:flex-row gap-5 lg:gap-10 pb-10 md:pb-20">
         <img
           src={product?.images[0]}
           alt={product?.name}
-          className="w-2/5 h-[75vh] object-cover"
+          className="w-full md:w-1/2 lg:w-2/5 object-cover"
         />
-        <div className="w-3/5">
-          <h1 className="text-4xl text-primary">{product?.name}</h1>
-          <p className="text-gray-500 mt-2">Category: {product?.category}</p>
-          <p className="mt-4 text-xl underline underline-offset-4">Details: </p>
-          <ul className="list-disc list-inside mt-2">
+        <div className="w-full md:w-1/2 lg:w-3/5">
+          <h1 className="text-2xl sm:text-3xl md:text-4xl text-primary">
+            {product?.name}
+          </h1>
+          <p className="text-sm sm:text-base text-gray-500 mt-1 sm:mt-2">
+            Category: {product?.category}
+          </p>
+          <p className="mt-4 text-lg md:text-xl underline underline-offset-4">
+            Details:{" "}
+          </p>
+          <ul className="list-disc list-inside mt-2 text-sm sm:text-base">
             {product?.details.map((detail, i) => (
               <li key={i}>{detail}</li>
             ))}
           </ul>
-          <p className="mt-4 text-xl underline underline-offset-4">
+          <p className="mt-4 text-lg md:text-xl underline underline-offset-4">
             About Us:{" "}
           </p>
-          <p className="mt-2">
+          <p className="mt-2 text-sm sm:text-base">
             We run a production house that provides services regarding adda and
             stitching work for traditional formal wear. we are a wholesaler and
             this website is only for brand awareness. we only cater to the
@@ -78,7 +83,7 @@ const Main = () => {
               </button>
             </div>
           </div>
-          <div className="mt-8 flex items-center gap-5">
+          <div className="hidden md:flex mt-8 items-center gap-5">
             {product?.images.map((img, i) => (
               <img src={img} alt="" className="w-20" key={i} />
             ))}

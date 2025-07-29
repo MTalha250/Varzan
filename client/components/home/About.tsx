@@ -53,13 +53,13 @@ const About = () => {
   ];
 
   return (
-    <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
-      <h1 className="text-center text-4xl uppercase tracking-widest">
+    <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-10 sm:py-20">
+      <h1 className="text-center text-2xl sm:text-3xl md:text-4xl uppercase tracking-widest">
         Welcome <br />
         <span className="text-primary lowercase">to</span> <br />
         Varzan
       </h1>
-      <p className="mt-8 text-lg text-gray-700 leading-relaxed text-justify">
+      <p className="mt-8 text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
         We bring your attention to Varzan, a name known for symbolizing elegance
         and luxury since the 1980s.The company offers manufacturing and whole
         sale for an immense range of eastern luxury, formals, Haute Couture, and
@@ -76,8 +76,8 @@ const About = () => {
         Uptan, mehndi, Peshwas with matha pati and semi stitch lite category.
       </p>
       <div className="flex flex-col items-center justify-center mt-8 space-y-4">
-        <img src="/images/logo-icon.png" alt="" />
-        <h1 className="text-center text-4xl uppercase tracking-widest">
+        <img src="/images/logo-icon.png" alt="" className="w-20 sm:w-auto" />
+        <h1 className="text-center text-2xl sm:text-3xl md:text-4xl uppercase tracking-widest">
           Process <br />
           <span className="text-primary lowercase">to</span> <br />
           Manufacturing
@@ -89,15 +89,17 @@ const About = () => {
             className="flex relative even:flex-row-reverse group"
             key={index}
           >
-            <div className="w-1/2 h-[40vh] border-secondary flex items-center justify-center group-even:border-l-2 group-odd:border-r-2">
-              <img src={step.image} alt="" className="w-70" />
+            <div className="w-1/2  h-[40vh] border-secondary flex items-center justify-center group-even:border-l-2 group-odd:border-r-2">
+              <img src={step.image} alt="" className="w-28 sm:w-70" />
             </div>
             <div className="w-1/2 h-[40vh] border-secondary flex flex-col group-even:border-r-2 group-even:border-secondary group-odd:border-l-2">
               <div className="h-1/2"></div>
               <div className="h-1/2 px-4 flex justify-center -translate-y-4">
                 <div>
-                  <h2 className="text-2xl">{step.title}</h2>
-                  <p className="max-w-md mt-4">{step.description}</p>
+                  <h2 className="text-lg sm:text-2xl">{step.title}</h2>
+                  <p className="text-xs sm:text-base text-justify max-w-md mt-4">
+                    {step.description}
+                  </p>
                 </div>
               </div>
             </div>

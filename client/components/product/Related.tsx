@@ -25,36 +25,50 @@ const Related = ({ products }: { products: Product[] }) => {
   };
 
   return (
-    <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
-      <h1 className="text-center text-3xl uppercase tracking-widest">
+    <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-10 md:py-20">
+      <h1 className="text-center text-xl sm:text-2xl md:text-3xl uppercase tracking-widest">
         Related Products
       </h1>
-      <div className="mt-8 flex items-center gap-8 w-full">
-        <button className="text-white bg-primary p-2" onClick={scrollLeft}>
+      <div className="mt-8 flex items-center md:gap-4 lg:gap-8 w-full relative">
+        <button
+          className="hidden md:block text-white bg-primary p-1 sm:p-2"
+          onClick={scrollLeft}
+        >
           <ChevronLeft />
         </button>
         <div
           ref={scrollContainerRef}
-          className="flex overflow-x-scroll -ml-8 scrollbar-hide w-full"
+          className="flex overflow-x-scroll -ml-4 md:-ml-8 scrollbar-hide w-full"
         >
           {products.map((product) => (
             <div
               key={product._id}
-              className="basis-1/4 shrink-0 pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
+              className="basis-1/2 lg:basis-1/3 shrink-0 pl-4 md:pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
             >
               <img
                 src={product.images?.[0] || "/images/sample.jpg"}
                 alt={product.name}
               />
-              <h2 className="text-center text-xl font-engravers mt-2 text-primary">
+              <h2 className="text-center text-sm sm:text-base lg:text-lg xl:text-xl font-engravers mt-2 text-primary">
                 {product.name}
               </h2>
             </div>
           ))}
         </div>
-        <button className="text-white bg-primary p-2" onClick={scrollRight}>
+        <button
+          className="hidden md:block text-white bg-primary p-1 sm:p-2"
+          onClick={scrollRight}
+        >
           <ChevronRight />
         </button>
+        <div className="w-[102%] flex justify-between md:hidden absolute top-1/2 -translate-y-1/2 -left-2">
+          <button className="text-white bg-primary p-1 sm:p-2">
+            <ChevronLeft />
+          </button>
+          <button className="text-white bg-primary p-1 sm:p-2">
+            <ChevronRight />
+          </button>
+        </div>
       </div>
     </div>
   );

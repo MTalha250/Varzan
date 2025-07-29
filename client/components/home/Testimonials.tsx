@@ -69,11 +69,14 @@ const Testimonials = () => {
 
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
-      <h1 className="text-center text-3xl uppercase tracking-widest">
+      <h1 className="text-center text-xl sm:text-2xl md:text-3xl uppercase tracking-widest">
         Client Reviews
       </h1>
-      <div className="mt-8 flex items-center gap-8 w-full">
-        <button className="text-white bg-primary p-2" onClick={scrollLeft}>
+      <div className="mt-8 flex items-center gap-4 sm:gap-8 w-full">
+        <button
+          className="text-white bg-primary p-1 sm:p-2"
+          onClick={scrollLeft}
+        >
           <ChevronLeft />
         </button>
         <div
@@ -83,7 +86,7 @@ const Testimonials = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="basis-1/3 shrink-0 pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
+              className="basis-full md:basis-1/2 xl:basis-1/3 shrink-0 pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
             >
               <div className="border-primary border-2 p-4">
                 <div className="flex gap-4 item-center">
@@ -104,7 +107,10 @@ const Testimonials = () => {
             </div>
           ))}
         </div>
-        <button className="text-white bg-primary p-2" onClick={scrollRight}>
+        <button
+          className="text-white bg-primary p-1 sm:p-2"
+          onClick={scrollRight}
+        >
           <ChevronRight />
         </button>
       </div>

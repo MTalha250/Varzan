@@ -59,11 +59,14 @@ const Highlights = () => {
 
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
-      <h1 className="text-center text-3xl uppercase tracking-widest">
+      <h1 className="text-center text-xl sm:text-2xl md:text-3xl uppercase tracking-widest">
         Product Highlights
       </h1>
-      <div className="mt-8 flex items-center gap-8 w-full">
-        <button className="text-white bg-primary p-2" onClick={scrollLeft}>
+      <div className="mt-8 flex items-center gap-4 sm:gap-8 w-full">
+        <button
+          className="text-white bg-primary p-1 sm:p-2"
+          onClick={scrollLeft}
+        >
           <ChevronLeft />
         </button>
         <div
@@ -73,7 +76,7 @@ const Highlights = () => {
           {products.map((product, index) => (
             <div
               key={index}
-              className="basis-1/4 shrink-0 pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
+              className="basis-full sm:basis-1/2 lg:basis-1/3 xl:basis-1/4 shrink-0 pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
             >
               <img src={product.image} alt={product.title} />
               <h2 className="text-center text-xl font-engravers mt-2 text-primary">
@@ -82,7 +85,10 @@ const Highlights = () => {
             </div>
           ))}
         </div>
-        <button className="text-white bg-primary p-2" onClick={scrollRight}>
+        <button
+          className="text-white bg-primary p-1 sm:p-2"
+          onClick={scrollRight}
+        >
           <ChevronRight />
         </button>
       </div>

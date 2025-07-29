@@ -10,7 +10,7 @@ const Hero = () => {
       />
       <img
         src="/images/heading.png"
-        className="absolute -bottom-6 right-0 z-10 w-4/5"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 md:translate-x-0 md:top-auto md:left-auto md:-bottom-6 md:right-0 z-10 w-4/5"
       />
     </div>
   );

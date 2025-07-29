@@ -51,8 +51,8 @@ const Grid = () => {
   };
 
   return (
-    <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-20">
+    <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-10 md:py-20">
+      <div className="grid grid-cols-2 md:grid-cols-3  gap-4 sm:gap-8 md:gap-10 lg:gap-20">
         {loading
           ? Array.from({ length: 8 }).map((_, index) => (
               <div key={index} className="w-full animate-pulse pt-2">
@@ -70,13 +70,13 @@ const Grid = () => {
                   src={product.images?.[0] || "/images/sample.jpg"}
                   alt={product.name}
                 />
-                <h2 className="text-center text-xl font-engravers mt-2 text-primary">
+                <h2 className="text-center text-sm sm:text-base lg:text-lg xl:text-xl font-engravers mt-2 text-primary">
                   {product.name}
                 </h2>
               </Link>
             ))}
       </div>
-      <div className="flex justify-center mt-20 gap-4">
+      <div className="flex justify-center mt-10 md:mt-20 gap-4">
         {Array.from({ length: totalPages }).map((_, i) => (
           <button
             key={i}
