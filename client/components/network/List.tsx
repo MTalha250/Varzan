@@ -11,7 +11,7 @@ const List = () => {
           <h2 className=" text-lg sm:text-xl md:text-2xl underline underline-offset-4 text-center uppercase">
             Local
           </h2>
-          <ul className="list-disc list-inside mt-8 text-base sm:text-lg tracking-widest space-y-4">
+          <ul className="list-disc mt-8 text-base sm:text-lg tracking-widest space-y-4">
             <li>Karachi</li>
             <li>Lahore</li>
             <li>Islamabad</li>
@@ -35,7 +35,7 @@ const List = () => {
           <h2 className="text-lg sm:text-xl md:text-2xl underline underline-offset-4 text-center uppercase">
             International
           </h2>
-          <ul className="list-disc list-inside mt-8 text-base sm:text-lg tracking-widest space-y-4">
+          <ul className="list-disc mt-8 text-base sm:text-lg tracking-widest space-y-4">
             <li>UK</li>
             <li>Saudia Arabia</li>
             <li>USA</li>

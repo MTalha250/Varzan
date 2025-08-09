@@ -3,6 +3,7 @@ import Link from "next/link";
 import React from "react";
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetHeader,
   SheetTitle,
@@ -48,25 +49,25 @@ const Navbar = () => {
               </SheetTitle>
             </SheetHeader>
             <nav className="mt-8 px-6">
-              <ul className="flex flex-col gap-4 text-xl uppercase font-engravers">
+              <ul className="flex flex-col gap-4 text-xl font-engravers">
                 <li className="hover:text-primary transition-all duration-300">
-                  <Link href="/" className="block py-2">
-                    Home
+                  <Link href="/">
+                    <SheetClose className="block py-2">HOME</SheetClose>
                   </Link>
                 </li>
                 <li className="hover:text-primary transition-all duration-300">
-                  <Link href="/products" className="block py-2">
-                    Products
+                  <Link href="/products">
+                    <SheetClose className="block py-2">PRODUCTS</SheetClose>
                   </Link>
                 </li>
                 <li className="hover:text-primary transition-all duration-300">
-                  <Link href="/network" className="block py-2">
-                    Network
+                  <Link href="/network">
+                    <SheetClose className="block py-2">NETWORK</SheetClose>
                   </Link>
                 </li>
                 <li className="hover:text-primary transition-all duration-300">
-                  <Link href="/contact" className="block py-2">
-                    Contact Us
+                  <Link href="/contact">
+                    <SheetClose className="block py-2">CONTACT US</SheetClose>
                   </Link>
                 </li>
               </ul>
