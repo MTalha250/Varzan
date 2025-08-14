@@ -59,8 +59,11 @@ const Testimonials = () => {
           className="flex overflow-x-scroll scrollbar-hide w-full -ml-8"
         >
           {testimonials.map((testimonial, index) => (
-            <Reveal key={index} delay={index * 0.05}>
-              <div className="basis-full md:basis-1/2 xl:basis-1/3 shrink-0 pl-8 hover:-translate-y-2 transition-all duration-300 pt-2">
+            <div
+              key={index}
+              className="basis-full md:basis-1/2 xl:basis-1/3 shrink-0 pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
+            >
+              <Reveal delay={index * 0.05}>
                 <div className="border-primary border-2 p-4">
                   <div className="flex gap-4 item-center">
                     <img
@@ -79,8 +82,8 @@ const Testimonials = () => {
                     {testimonial.message}
                   </p>
                 </div>
-              </div>
-            </Reveal>
+              </Reveal>
+            </div>
           ))}
         </div>
         <button
