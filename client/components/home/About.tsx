@@ -90,9 +90,12 @@ const About = () => {
         </h1>
       </div>
       <div className="mt-8">
-        {steps.map((step, index) => (
-          <Reveal key={index} delay={index * 0.05}>
-            <div className="flex relative even:flex-row-reverse group">
+        <Reveal>
+          {steps.map((step, index) => (
+            <div
+              key={index}
+              className="flex relative even:flex-row-reverse group"
+            >
               <div className="w-1/2  h-[40vh] border-secondary flex items-center justify-center group-even:border-l-2 group-odd:border-r-2">
                 <img src={step.image} alt="" className="w-28 sm:w-70" />
               </div>
@@ -109,8 +112,8 @@ const About = () => {
               </div>
               <div className="absolute w-3 h-3 rounded-full left-1/2 top-1/2 -translate-1/2 bg-secondary"></div>
             </div>
-          </Reveal>
-        ))}
+          ))}
+        </Reveal>
       </div>
     </div>
   );
