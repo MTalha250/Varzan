@@ -6,6 +6,7 @@ import { fetchFilteredProducts } from "@/lib/api";
 import type { Product } from "@/types";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Skeleton } from "../ui/skeleton";
+import Reveal from "../ui/reveal";
 
 const Grid = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -54,17 +55,18 @@ const Grid = () => {
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-10 md:py-20">
       <div className="grid grid-cols-2 md:grid-cols-3  gap-4 sm:gap-8 md:gap-10 lg:gap-20">
-        {loading
-          ? Array.from({ length: 8 }).map((_, index) => (
-              <div key={index} className="w-full pt-2">
-                <Skeleton className="h-80 w-full" />
-                <Skeleton className="h-6 w-1/2 mx-auto mt-2 rounded" />
-              </div>
-            ))
-          : products.map((product) => (
+        {loading ? (
+          Array.from({ length: 8 }).map((_, index) => (
+            <div key={index} className="w-full pt-2">
+              <Skeleton className="h-80 w-full" />
+              <Skeleton className="h-6 w-1/2 mx-auto mt-2 rounded" />
+            </div>
+          ))
+        ) : products.length > 0 ? (
+          products.map((product, index) => (
+            <Reveal key={product._id} delay={index * 0.05}>
               <Link
                 href={`/products/${product._id}`}
-                key={product._id}
                 className="w-full hover:-translate-y-2 transition-all duration-300 pt-2"
               >
                 <img
@@ -75,7 +77,13 @@ const Grid = () => {
                   {product.name}
                 </h2>
               </Link>
-            ))}
+            </Reveal>
+          ))
+        ) : (
+          <div className="text-center h-80 flex items-center justify-center text-2xl font-engravers text-primary col-span-full">
+            No products found
+          </div>
+        )}
       </div>
       <div className="flex justify-center mt-10 md:mt-20 gap-4">
         {Array.from({ length: totalPages }).map((_, i) => (

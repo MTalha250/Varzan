@@ -8,7 +8,7 @@ import {
   GridIcon,
   HorizontaLDots,
 } from "../icons/index";
-import { ChevronDown, Settings, Package, Tags, MessageSquare, Users } from "lucide-react";
+import { ChevronDown, Settings, Package, Tags, MessageSquare, Users, Quote } from "lucide-react";
 
 type NavItem = {
   name: string;
@@ -32,6 +32,11 @@ const navItems: NavItem[] = [
     icon: <Tags />,
     name: "Categories",
     path: "/categories",
+  },
+  {
+    icon: <Quote />,
+    name: "Testimonials",
+    path: "/testimonials",
   },
   {
     icon: <MessageSquare />,

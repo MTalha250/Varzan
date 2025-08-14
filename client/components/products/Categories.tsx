@@ -4,6 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { fetchCategories } from "@/lib/api";
 import type { Category } from "@/types";
 import { Skeleton } from "../ui/skeleton";
+import Reveal from "../ui/reveal";
 
 const Categories = () => {
   const searchParams = useSearchParams();
@@ -54,20 +55,21 @@ const Categories = () => {
           ? Array.from({ length: 8 }).map((_, i) => (
               <Skeleton key={i} className="h-8 md:h-10 w-full rounded-full" />
             ))
-          : categories.map((category) => (
-              <button
-                key={category._id}
-                onClick={() => handleCategoryClick(category.name)}
-                className={`border rounded-full py-1 cursor-pointer transition-all duration-300 ${
-                  selectedCategory === category.name
-                    ? "bg-primary text-white border-primary"
-                    : "text-primary border-primary hover:bg-primary hover:text-white"
-                }`}
-              >
-                <h2 className="font-engravers text-sm sm:text-base lg:text-lg xl:text-xl">
-                  {category.name}
-                </h2>
-              </button>
+          : categories.map((category, index) => (
+              <Reveal key={category._id} delay={index * 0.03}>
+                <button
+                  onClick={() => handleCategoryClick(category.name)}
+                  className={`border w-full rounded-full py-1 cursor-pointer transition-all duration-300 ${
+                    selectedCategory === category.name
+                      ? "bg-primary text-white border-primary"
+                      : "text-primary border-primary hover:bg-primary hover:text-white"
+                  }`}
+                >
+                  <h2 className="font-engravers text-sm sm:text-base lg:text-lg xl:text-xl">
+                    {category.name}
+                  </h2>
+                </button>
+              </Reveal>
             ))}
       </div>
     </div>

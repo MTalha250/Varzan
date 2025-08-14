@@ -183,3 +183,14 @@ export const filterValues = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const getHighlightedProducts = async (req, res) => {
+  try {
+    const products = await Product.find({ inHighlight: true }).sort({
+      createdAt: -1,
+    });
+    res.json({ products });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

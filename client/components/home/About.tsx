@@ -1,4 +1,5 @@
 import React from "react";
+import Reveal from "@/components/ui/reveal";
 
 const About = () => {
   const steps = [
@@ -54,27 +55,32 @@ const About = () => {
 
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-10 sm:py-20">
-      <h1 className="text-center text-2xl sm:text-3xl md:text-4xl uppercase tracking-widest">
-        Welcome <br />
-        <span className="text-primary lowercase">to</span> <br />
-        Varzan
-      </h1>
-      <p className="mt-8 text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
-        We bring your attention to Varzan, a name known for symbolizing elegance
-        and luxury since the 1980s.The company offers manufacturing and whole
-        sale for an immense range of eastern luxury, formals, Haute Couture, and
-        bridal dresses delivered worldwide. We have not only gained trust among
-        the retailers of Pakistan but also among retailers internationally. Our
-        designs are a unique blend of feminine fragility and power that reflect
-        traditional craftsmanship in a modern way. Our brand is known for the
-        high-quality fabric, rich organic color story, and magnicent designs
-        fused with sublime cuts and silhouettes dening the modern era through
-        traditional manner. We have an ample amount of production capacity along
-        with a vast variety of designs for all our categories with the best
-        quality standards around. Our main variety includes bridal, maxi, gown,
-        balochi, frock, shirt, cape, shari, talpatt, Dhaka Sharara, Gharara set,
-        Uptan, mehndi, Peshwas with matha pati and semi stitch lite category.
-      </p>
+      <Reveal>
+        <h1 className="text-center text-2xl sm:text-3xl md:text-4xl uppercase tracking-widest">
+          Welcome <br />
+          <span className="text-primary lowercase">to</span> <br />
+          Varzan
+        </h1>
+      </Reveal>
+      <Reveal delay={0.1}>
+        <p className="mt-8 text-base sm:text-lg text-gray-700 leading-relaxed text-justify">
+          We bring your attention to Varzan, a name known for symbolizing
+          elegance and luxury since the 1980s.The company offers manufacturing
+          and whole sale for an immense range of eastern luxury, formals, Haute
+          Couture, and bridal dresses delivered worldwide. We have not only
+          gained trust among the retailers of Pakistan but also among retailers
+          internationally. Our designs are a unique blend of feminine fragility
+          and power that reflect traditional craftsmanship in a modern way. Our
+          brand is known for the high-quality fabric, rich organic color story,
+          and magnicent designs fused with sublime cuts and silhouettes dening
+          the modern era through traditional manner. We have an ample amount of
+          production capacity along with a vast variety of designs for all our
+          categories with the best quality standards around. Our main variety
+          includes bridal, maxi, gown, balochi, frock, shirt, cape, shari,
+          talpatt, Dhaka Sharara, Gharara set, Uptan, mehndi, Peshwas with matha
+          pati and semi stitch lite category.
+        </p>
+      </Reveal>
       <div className="flex flex-col items-center justify-center mt-8 space-y-4">
         <img src="/images/logo-icon.png" alt="" className="w-20 sm:w-auto" />
         <h1 className="text-center text-2xl sm:text-3xl md:text-4xl uppercase tracking-widest">
@@ -85,26 +91,25 @@ const About = () => {
       </div>
       <div className="mt-8">
         {steps.map((step, index) => (
-          <div
-            className="flex relative even:flex-row-reverse group"
-            key={index}
-          >
-            <div className="w-1/2  h-[40vh] border-secondary flex items-center justify-center group-even:border-l-2 group-odd:border-r-2">
-              <img src={step.image} alt="" className="w-28 sm:w-70" />
-            </div>
-            <div className="w-1/2 h-[40vh] border-secondary flex flex-col group-even:border-r-2 group-even:border-secondary group-odd:border-l-2">
-              <div className="h-1/2"></div>
-              <div className="h-1/2 px-4 flex justify-center -translate-y-4">
-                <div>
-                  <h2 className="text-lg sm:text-2xl">{step.title}</h2>
-                  <p className="text-xs sm:text-base text-justify max-w-md mt-4">
-                    {step.description}
-                  </p>
+          <Reveal key={index} delay={index * 0.05}>
+            <div className="flex relative even:flex-row-reverse group">
+              <div className="w-1/2  h-[40vh] border-secondary flex items-center justify-center group-even:border-l-2 group-odd:border-r-2">
+                <img src={step.image} alt="" className="w-28 sm:w-70" />
+              </div>
+              <div className="w-1/2 h-[40vh] border-secondary flex flex-col group-even:border-r-2 group-even:border-secondary group-odd:border-l-2">
+                <div className="h-1/2"></div>
+                <div className="h-1/2 px-4 flex justify-center -translate-y-4">
+                  <div>
+                    <h2 className="text-lg sm:text-2xl">{step.title}</h2>
+                    <p className="text-xs sm:text-base text-justify max-w-md mt-4">
+                      {step.description}
+                    </p>
+                  </div>
                 </div>
               </div>
+              <div className="absolute w-3 h-3 rounded-full left-1/2 top-1/2 -translate-1/2 bg-secondary"></div>
             </div>
-            <div className="absolute w-3 h-3 rounded-full left-1/2 top-1/2 -translate-1/2 bg-secondary"></div>
-          </div>
+          </Reveal>
         ))}
       </div>
     </div>

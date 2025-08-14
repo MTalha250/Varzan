@@ -40,20 +40,26 @@ const Related = ({ products }: { products: Product[] }) => {
           ref={scrollContainerRef}
           className="flex overflow-x-scroll -ml-4 md:-ml-8 scrollbar-hide w-full"
         >
-          {products.map((product) => (
-            <div
-              key={product._id}
-              className="basis-1/2 lg:basis-1/3 shrink-0 pl-4 md:pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
-            >
-              <img
-                src={product.images?.[0] || "/images/sample.jpg"}
-                alt={product.name}
-              />
-              <h2 className="text-center text-sm sm:text-base lg:text-lg xl:text-xl font-engravers mt-2 text-primary">
-                {product.name}
-              </h2>
+          {products.length > 0 ? (
+            products.map((product) => (
+              <div
+                key={product._id}
+                className="basis-1/2 lg:basis-1/3 shrink-0 pl-4 md:pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
+              >
+                <img
+                  src={product.images?.[0] || "/images/sample.jpg"}
+                  alt={product.name}
+                />
+                <h2 className="text-center text-sm sm:text-base lg:text-lg xl:text-xl font-engravers mt-2 text-primary">
+                  {product.name}
+                </h2>
+              </div>
+            ))
+          ) : (
+            <div className="pl-4 md:pl-8 w-full h-80 flex items-center justify-center text-center text-2xl font-engravers text-primary">
+              No products found
             </div>
-          ))}
+          )}
         </div>
         <button
           className="hidden md:block text-white bg-primary p-1 sm:p-2"

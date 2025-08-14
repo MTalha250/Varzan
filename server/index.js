@@ -8,6 +8,7 @@ import categoryRoutes from "./routes/category.js";
 import contactRoutes from "./routes/contact.js";
 import dashboardStatsRoutes from "./routes/dashboardStats.js";
 import productRoutes from "./routes/product.js";
+import testimonialRoutes from "./routes/testimonial.js";
 
 dotenv.config();
 
@@ -55,6 +56,7 @@ app.use("/api/category", categoryRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/dashboard", dashboardStatsRoutes);
 app.use("/api/product", productRoutes);
+app.use("/api/testimonial", testimonialRoutes);
 
 const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => {

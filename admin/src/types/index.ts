@@ -24,6 +24,17 @@ export interface Product {
   updatedAt: string;
 }
 
+// Testimonial Types
+export interface Testimonial {
+  _id: string;
+  image?: string;
+  name: string;
+  email: string;
+  message: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 // Category Types
 export interface Category {
   _id: string;

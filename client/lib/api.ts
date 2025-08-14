@@ -11,6 +11,7 @@ export const fetchProductsByCategory = (category: string, params = {}) =>
   API.get(`/product/category/${category}`, { params });
 export const fetchFilteredProducts = (params = {}) =>
   API.get("/product/filter", { params });
+export const fetchHighlightedProducts = () => API.get("/product/highlighted");
 
 // Categories
 export const fetchCategories = () => API.get("/category");
@@ -22,5 +23,10 @@ export const sendContact = (data: {
   email: string;
   message: string;
 }) => API.post("/contact", data);
+
+// Testimonials
+export const fetchTestimonials = (params = {}) =>
+  API.get("/testimonial", { params });
+export const fetchAllTestimonials = () => API.get("/testimonial/all");
 
 export default API;
