@@ -2,6 +2,7 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import React, { useRef } from "react";
 import type { Product } from "@/types";
+import Link from "next/link";
 
 const Related = ({ products }: { products: Product[] }) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
@@ -42,8 +43,9 @@ const Related = ({ products }: { products: Product[] }) => {
         >
           {products.length > 0 ? (
             products.map((product) => (
-              <div
+              <Link
                 key={product._id}
+                href={`/products/${product._id}`}
                 className="basis-1/2 lg:basis-1/3 shrink-0 pl-4 md:pl-8 hover:-translate-y-2 transition-all duration-300 pt-2"
               >
                 <img
@@ -53,7 +55,7 @@ const Related = ({ products }: { products: Product[] }) => {
                 <h2 className="text-center text-sm sm:text-base lg:text-lg xl:text-xl font-engravers mt-2 text-primary">
                   {product.name}
                 </h2>
-              </div>
+              </Link>
             ))
           ) : (
             <div className="pl-4 md:pl-8 w-full h-80 flex items-center justify-center text-center text-2xl font-engravers text-primary">
