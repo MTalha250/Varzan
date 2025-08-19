@@ -3,7 +3,7 @@ import About from "@/components/home/About";
 import Highlights from "@/components/home/Highlights";
 import Hero from "@/components/home/Hero";
 import React from "react";
-import Testimonials from "@/components/home/Testimonials";
+// import Testimonials from "@/components/home/Testimonials";
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -19,7 +19,7 @@ const Home = () => {
       <hr />
       <Highlights />
       <hr />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <hr />
     </motion.div>
   );

@@ -51,6 +51,9 @@ const List = () => {
               <li>USA</li>
               <li>Singapore</li>
               <li>Canada</li>
+              <li>Dubai</li>
+              <li>Norway</li>
+              <li>Scotland</li>
             </ul>
           </Reveal>
         </div>
