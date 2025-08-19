@@ -23,22 +23,7 @@ const Network = () => {
       </Reveal>
       <Reveal delay={0.05}>
         <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 mt-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-4 border-2 border-primary rounded">
-              <img
-                src="/images/pakistan.jpg"
-                alt="Pakistan map"
-                className="w-full h-[300px] sm:h-[400px] object-contain"
-              />
-            </div>
-            <div className="p-4 border-2 border-primary rounded">
-              <img
-                src="/images/world.jpg"
-                alt="World map"
-                className="w-full h-[300px] sm:h-[400px] object-contain"
-              />
-            </div>
-          </div>
+          <img src="/images/world.jpg" alt="World map" className="w-full" />
         </section>
       </Reveal>
       <List />
