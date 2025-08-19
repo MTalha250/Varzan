@@ -40,7 +40,7 @@ const Categories = () => {
 
   return (
     <div className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-10">
-      <div className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-8 gap-4 lg:gap-6 xl:gap-8">
+      <div className="grid grid-cols-3 md:grid-cols-6 gap-4 lg:gap-6 xl:gap-8">
         {/* <button
           onClick={() => handleCategoryClick("All")}
           className={`border rounded-full py-1 px-8 cursor-pointer transition-all duration-300 ${
@@ -52,7 +52,7 @@ const Categories = () => {
           <h2 className="font-engravers text-xl">All</h2>
         </button> */}
         {loading
-          ? Array.from({ length: 8 }).map((_, i) => (
+          ? Array.from({ length: 6 }).map((_, i) => (
               <Skeleton key={i} className="h-8 md:h-10 w-full rounded-full" />
             ))
           : categories.map((category, index) => (
