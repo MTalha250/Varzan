@@ -1,5 +1,4 @@
 "use client";
-import { Facebook, Instagram, Phone, Twitter } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { fetchProductById } from "@/lib/api";
@@ -11,6 +10,13 @@ import { Autoplay, Thumbs } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/thumbs";
 import Reveal from "../ui/reveal";
+import {
+  FaWhatsapp,
+  FaInstagram,
+  FaFacebook,
+  FaYoutube,
+  FaTiktok,
+} from "react-icons/fa";
 
 const Main = () => {
   const { id } = useParams();
@@ -77,6 +83,7 @@ const Main = () => {
             <div className="flex items-center gap-2">
               <Skeleton className="h-4 w-12" />
               <div className="flex gap-2">
+                <Skeleton className="w-8 h-8 rounded-full" />
                 <Skeleton className="w-8 h-8 rounded-full" />
                 <Skeleton className="w-8 h-8 rounded-full" />
                 <Skeleton className="w-8 h-8 rounded-full" />
@@ -166,14 +173,18 @@ const Main = () => {
             <p className="text-sm sm:text-base text-gray-500 mt-1 sm:mt-2">
               Category: {product?.category}
             </p>
-            <p className="mt-4 text-lg md:text-xl underline underline-offset-4">
-              Details:{" "}
-            </p>
-            <ul className="list-disc list-inside mt-2 text-sm sm:text-base">
-              {product?.details.map((detail, i) => (
-                <li key={i}>{detail}</li>
-              ))}
-            </ul>
+            {product?.details && product?.details.length > 0 && (
+              <p className="mt-4 text-lg md:text-xl underline underline-offset-4">
+                Details:{" "}
+              </p>
+            )}
+            {product?.details && product?.details.length > 0 && (
+              <ul className="list-disc list-inside mt-2 text-sm sm:text-base">
+                {product?.details.map((detail, i) => (
+                  <li key={i}>{detail}</li>
+                ))}
+              </ul>
+            )}
             <p className="mt-4 text-lg md:text-xl underline underline-offset-4">
               About Us:{" "}
             </p>
@@ -183,26 +194,49 @@ const Main = () => {
               wholesaler and this website is only for brand awareness. we only
               cater to the customer after the appointment.
             </p>
-            <button className="flex mt-4 w-full">
+            <a
+              href="https://wa.me/923207412047"
+              target="_blank"
+              className="flex mt-4 w-full"
+            >
               <span className="bg-primary text-white text-[15px] p-2">
                 Talk to us
               </span>
               <span className="border p-2">
-                <Phone className="w-5 h-5" strokeWidth={1} />
+                <FaWhatsapp className="w-5 h-5" />
               </span>
-            </button>
+            </a>
             <div className="flex mt-4 items-center gap-2">
               <span>SHARE</span>
               <div className="flex gap-2">
-                <button className="bg-primary rounded-full p-2 w-8 h-8 shrink-0 flex items-center justify-center">
-                  <Instagram className="w-4 h-4 text-white" />
-                </button>
-                <button className="bg-primary rounded-full p-2 w-8 h-8 shrink-0 flex items-center justify-center">
-                  <Facebook className="w-4 h-4 text-white" />
-                </button>
-                <button className="bg-primary rounded-full p-2 w-8 h-8 shrink-0 flex items-center justify-center">
-                  <Twitter className="w-4 h-4 text-white" />
-                </button>
+                <a
+                  href="https://www.instagram.com/varzan_1980"
+                  target="_blank"
+                  className="bg-primary rounded-full p-2 w-8 h-8 shrink-0 flex items-center justify-center"
+                >
+                  <FaInstagram className="w-4 h-4 text-white" />
+                </a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=61578841522870"
+                  target="_blank"
+                  className="bg-primary rounded-full p-2 w-8 h-8 shrink-0 flex items-center justify-center"
+                >
+                  <FaFacebook className="w-4 h-4 text-white" />
+                </a>
+                <a
+                  href="https://www.youtube.com/@Varzan-1980"
+                  target="_blank"
+                  className="bg-primary rounded-full p-2 w-8 h-8 shrink-0 flex items-center justify-center"
+                >
+                  <FaYoutube className="w-4 h-4 text-white" />
+                </a>
+                <a
+                  href="https://www.tiktok.com/"
+                  target="_blank"
+                  className="bg-primary rounded-full p-2 w-8 h-8 shrink-0 flex items-center justify-center"
+                >
+                  <FaTiktok className="w-4 h-4 text-white" />
+                </a>
               </div>
             </div>
             {product?.images.length && product?.images.length > 1 && (

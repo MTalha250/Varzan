@@ -1,12 +1,12 @@
 "use client";
+import { Mail, MapPin, PhoneCall } from "lucide-react";
 import {
-  Facebook,
-  Instagram,
-  Mail,
-  MapPin,
-  PhoneCall,
-  Twitter,
-} from "lucide-react";
+  FaWhatsapp,
+  FaInstagram,
+  FaFacebook,
+  FaYoutube,
+  FaTiktok,
+} from "react-icons/fa";
 import React, { useState } from "react";
 import { sendContact } from "@/lib/api";
 import toast from "react-hot-toast";
@@ -73,26 +73,45 @@ const Footer = () => {
               <div className="bg-primary rounded-full p-2 w-10 h-10 flex items-center justify-center">
                 <PhoneCall className="w-4 h-4 text-white" />
               </div>
-              <span className="">+92 3231443144</span>
+              <span className="">+92 320 7412047</span>
             </li>
             <li className="flex items-center gap-2">
               <div className="bg-primary rounded-full p-2 w-10 h-10 flex items-center justify-center">
                 <Mail className="w-4 h-4 text-white" />
               </div>
-              <span className="">varzan@gmail.com</span>
+              <span className="">info.varzan@gmail.com</span>
             </li>
           </ul>
           <h2 className="text-lg mt-8">FOLLOW US</h2>
           <div className="flex gap-4 mt-4">
-            <button className="bg-primary rounded-full p-2 w-10 h-10 shrink-0 flex items-center justify-center">
-              <Instagram className="w-5 h-5 text-white" />
-            </button>
-            <button className="bg-primary rounded-full p-2 w-10 h-10 shrink-0 flex items-center justify-center">
-              <Facebook className="w-5 h-5 text-white" />
-            </button>
-            <button className="bg-primary rounded-full p-2 w-10 h-10 shrink-0 flex items-center justify-center">
-              <Twitter className="w-5 h-5 text-white" />
-            </button>
+            <a
+              href="https://www.instagram.com/varzan_1980"
+              target="_blank"
+              className="bg-primary rounded-full p-2 w-10 h-10 shrink-0 flex items-center justify-center"
+            >
+              <FaInstagram className="w-5 h-5 text-white" />
+            </a>
+            <a
+              href="https://www.facebook.com/profile.php?id=61578841522870"
+              target="_blank"
+              className="bg-primary rounded-full p-2 w-10 h-10 shrink-0 flex items-center justify-center"
+            >
+              <FaFacebook className="w-5 h-5 text-white" />
+            </a>
+            <a
+              href="https://www.youtube.com/@Varzan-1980"
+              target="_blank"
+              className="bg-primary rounded-full p-2 w-10 h-10 shrink-0 flex items-center justify-center"
+            >
+              <FaYoutube className="w-5 h-5 text-white" />
+            </a>
+            <a
+              href="https://www.tiktok.com/"
+              target="_blank"
+              className="bg-primary rounded-full p-2 w-10 h-10 shrink-0 flex items-center justify-center"
+            >
+              <FaTiktok className="w-5 h-5 text-white" />
+            </a>
           </div>
         </div>
         <form
