@@ -1,5 +1,5 @@
 "use client";
-import { Mail, MapPin, PhoneCall } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import {
   FaWhatsapp,
   FaInstagram,
@@ -63,24 +63,36 @@ const Footer = () => {
         <div className="w-full sm:w-1/2">
           <h2 className="text-lg">GET IN TOUCH</h2>
           <ul className="mt-4 space-y-4">
-            <li className="flex items-center gap-2">
+            <a
+              href="https://maps.app.goo.gl/uEfHdSp1WUZFc3MNA"
+              target="_blank"
+              className="flex items-center gap-2"
+            >
               <div className="bg-primary rounded-full p-2 w-10 h-10 flex items-center justify-center">
                 <MapPin className="w-4 h-4 text-white" />
               </div>
               <span className="">2A-1 Rajput Town Canal Road,Lahore</span>
-            </li>
-            <li className="flex items-center gap-2">
+            </a>
+            <a
+              href="https://wa.me/923207412047"
+              target="_blank"
+              className="flex items-center gap-2"
+            >
               <div className="bg-primary rounded-full p-2 w-10 h-10 flex items-center justify-center">
-                <PhoneCall className="w-4 h-4 text-white" />
+                <FaWhatsapp className="w-4 h-4 text-white" />
               </div>
               <span className="">+92 320 7412047</span>
-            </li>
-            <li className="flex items-center gap-2">
+            </a>
+            <a
+              href="mailto:info.varzan@gmail.com"
+              target="_blank"
+              className="flex items-center gap-2"
+            >
               <div className="bg-primary rounded-full p-2 w-10 h-10 flex items-center justify-center">
                 <Mail className="w-4 h-4 text-white" />
               </div>
               <span className="">info.varzan@gmail.com</span>
-            </li>
+            </a>
           </ul>
           <h2 className="text-lg mt-8">FOLLOW US</h2>
           <div className="flex gap-4 mt-4">
