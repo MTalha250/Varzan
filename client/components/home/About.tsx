@@ -1,5 +1,6 @@
 import React from "react";
 import Reveal from "@/components/ui/reveal";
+import { motion } from "framer-motion";
 
 const About = () => {
   const steps = [
@@ -97,18 +98,42 @@ const About = () => {
               className="flex relative even:flex-row-reverse group"
             >
               <div className="w-1/2  h-[40vh] border-secondary flex items-center justify-center group-even:border-l-2 group-odd:border-r-2">
-                <img src={step.image} alt="" className="w-28 sm:w-70" />
+                <motion.img
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -32 : 32 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    ease: "easeOut",
+                  }}
+                  viewport={{ once: true }}
+                  src={step.image}
+                  alt=""
+                  className="w-28 sm:w-70"
+                />
               </div>
-              <div className="w-1/2 h-[40vh] border-secondary flex flex-col group-even:border-r-2 group-even:border-secondary group-odd:border-l-2">
-                <div className="h-1/2"></div>
-                <div className="h-1/2 px-4 flex justify-center -translate-y-4">
-                  <div>
-                    <h2 className="text-lg sm:text-2xl">{step.title}</h2>
-                    <p className="text-xs sm:text-base text-justify max-w-md mt-4">
-                      {step.description}
-                    </p>
+              <div className="w-1/2 h-[40vh] border-secondary group-even:border-r-2 group-even:border-secondary group-odd:border-l-2">
+                <motion.div
+                  initial={{ opacity: 0, x: index % 2 === 0 ? 32 : -32 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: index * 0.1,
+                    ease: "easeOut",
+                  }}
+                  viewport={{ once: true }}
+                  className="flex flex-col h-full w-full"
+                >
+                  <div className="h-1/2"></div>
+                  <div className="h-1/2 px-4 flex justify-center -translate-y-4">
+                    <div>
+                      <h2 className="text-lg sm:text-2xl">{step.title}</h2>
+                      <p className="text-xs sm:text-base text-justify max-w-md mt-4">
+                        {step.description}
+                      </p>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
               <div className="absolute w-3 h-3 rounded-full left-1/2 top-1/2 -translate-1/2 bg-secondary"></div>
             </div>
