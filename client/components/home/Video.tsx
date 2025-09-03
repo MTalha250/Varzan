@@ -6,10 +6,8 @@ const Video = () => {
     <section className="px-4 sm:px-8 md:px-16 lg:px-24 xl:px-32 py-20 bg-gradient-to-b from-background to-muted/20">
       <Reveal>
         <div className="flex flex-col items-center justify-center mb-12">
-          <h1 className="text-center text-2xl sm:text-3xl md:text-4xl uppercase tracking-widest">
-            Behind <br />
-            <span className="text-primary lowercase">the</span> <br />
-            Scenes
+          <h1 className="text-center text-xl sm:text-2xl md:text-3xl uppercase tracking-widest">
+            Behind the Scenes
           </h1>
           <p className="mt-6 text-base sm:text-lg text-gray-700 leading-relaxed text-center max-w-2xl">
             Discover the artistry and craftsmanship that goes into every Varzan
@@ -24,7 +22,7 @@ const Video = () => {
           <div className="relative overflow-hidden rounded-2xl shadow-2xl border-4 border-secondary/20">
             <video
               className="w-full h-auto aspect-video object-cover"
-              src="/images/hero-video.mp4"
+              src="/images/video.mp4"
               muted
               autoPlay
               loop
