@@ -2,8 +2,8 @@
 import About from "@/components/home/About";
 import Highlights from "@/components/home/Highlights";
 import Hero from "@/components/home/Hero";
+import Video from "@/components/home/Video";
 import React from "react";
-// import Testimonials from "@/components/home/Testimonials";
 import { motion } from "framer-motion";
 
 const Home = () => {
@@ -17,9 +17,9 @@ const Home = () => {
       <Hero />
       <About />
       <hr />
-      <Highlights />
+      <Video />
       <hr />
-      {/* <Testimonials /> */}
+      <Highlights />
       <hr />
     </motion.div>
   );
