@@ -1,8 +1,15 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import Reveal from "@/components/ui/reveal";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const About = () => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 50%", "end 50%"],
+  });
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
   const steps = [
     {
       image: "/images/a1.png",
@@ -90,14 +97,19 @@ const About = () => {
           Manufacturing
         </h1>
       </div>
-      <div className="mt-8">
+      <div className="mt-8 relative" ref={containerRef}>
+        <div className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 w-[4px] bg-gray-300 h-full"></div>
+        <motion.div
+          className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2 w-[4px] bg-secondary"
+          style={{ height: lineHeight }}
+        />
         <Reveal>
           {steps.map((step, index) => (
             <div
               key={index}
               className="flex relative even:flex-row-reverse group"
             >
-              <div className="w-1/2  h-[40vh] border-secondary flex items-center justify-center group-even:border-l-2 group-odd:border-r-2">
+              <div className="w-1/2 h-[40vh] flex items-center justify-center">
                 <motion.img
                   initial={{ opacity: 0, x: index % 2 === 0 ? -32 : 32 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -112,7 +124,7 @@ const About = () => {
                   className="w-28 sm:w-70"
                 />
               </div>
-              <div className="w-1/2 h-[40vh] border-secondary group-even:border-r-2 group-even:border-secondary group-odd:border-l-2">
+              <div className="w-1/2 h-[40vh]">
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? 32 : -32 }}
                   whileInView={{ opacity: 1, x: 0 }}
