@@ -21,13 +21,15 @@ const Network = () => {
           <br /> Network
         </h1>
       </Reveal>
-      <video
-        src="/images/map.mp4"
-        className="w-full mt-10"
-        autoPlay
-        loop
-        muted
-      />
+      <Reveal delay={0.05}>
+        <video
+          src="/images/map.mp4"
+          className="w-full mt-10"
+          autoPlay
+          loop
+          muted
+        />
+      </Reveal>
       <List />
       <hr />
     </motion.div>
